@@ -183,7 +183,7 @@ def condition_string(condition_code):
         return_str = "バイオレンスな嵐です。"
     elif condition_code == 962:
         return_str = "ハリケーンです。"
-    return "今の大阪の天気は" + return_str
+    return "今の天気は" + return_str
 
 
 
