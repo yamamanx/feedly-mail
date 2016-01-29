@@ -18,7 +18,7 @@ to_addr = "TO MAIL ADDRESS"
 to_ccs = ["CC MAIL ADDRESS1","CC MAIL ADDRESS2","CC MAIL ADDRESS3","CC MAIL ADDRESS4","CC MAIL ADDRESS5"]
 WEATHERMAP_CITY = "CITY NAME"
 WEATHERMAP_API_KEY = "API KEY"
-FEEDLY_API_KEY = "API KEY"
+FEEDLY_TOKEN = "TOKEN KEY" 
 FEEDLY_USER_ID = "USER ID"
 
 def create_message(from_addr, to_addr, subject, body, to_ccs, encoding):
@@ -196,7 +196,7 @@ def lambda_handler(event, context):
         last_week_time=now-timedelta(7)
         unix_time = int(time.mktime(last_week_time.timetuple()))*1000
 
-        headers = {'Authorization': FEEDLY_API_KEY}
+        headers = {'Authorization': FEEDLY_TOKEN}
 
         response_stream = requests.get('https://cloud.feedly.com/v3/streams/contents?streamId=user/' + FEEDLY_USER_ID + '/tag/global.saved&count=100&newerThan=' + str(unix_time), headers=headers)
         stream_data = json.loads(response_stream.text)
